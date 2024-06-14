@@ -1,5 +1,12 @@
 const dotenv = require('dotenv');
 const app = require('./app');
+const schedule = require('node-schedule');
+const { default: axios } = require('axios');
+
+schedule.scheduleJob('*/15 * * * *', async () => {
+  console.log('Poked server!');
+  await axios.get('/api/v1/poke-server');
+});
 
 dotenv.config({ path: './config.env' });
 
