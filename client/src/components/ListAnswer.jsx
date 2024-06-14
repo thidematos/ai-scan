@@ -2,10 +2,11 @@ import Button from "../Utils/Button";
 import InteractionButton from "../Utils/InteractionButton";
 import Loader from "../Utils/Loader";
 import ReferenceImage from "../Utils/ReferenceImage";
+import SendMail from "../Utils/SendMail";
 import { useAI } from "../context/AIProvider";
 
 function ListAnswer() {
-  const { exportAnswer, answer, status } = useAI();
+  const { exportAnswer, answer, status, sendToMail } = useAI();
 
   const rawItens = answer.split("|");
 
@@ -20,9 +21,20 @@ function ListAnswer() {
       {status === "loading" ? (
         <Loader />
       ) : (
-        <InteractionButton action={() => exportAnswer("docx", itens)}>
-          <img src="/docx.png" className="w-[50%] drop-shadow" />
-        </InteractionButton>
+        <>
+          <SendMail />
+          {sendToMail.send ? (
+            sendToMail.valid && (
+              <InteractionButton action={() => exportAnswer("docx", itens)}>
+                <img src="/docx.png" className="w-[50%] drop-shadow" />
+              </InteractionButton>
+            )
+          ) : (
+            <InteractionButton action={() => exportAnswer("docx", itens)}>
+              <img src="/docx.png" className="w-[50%] drop-shadow" />
+            </InteractionButton>
+          )}
+        </>
       )}
     </div>
   );

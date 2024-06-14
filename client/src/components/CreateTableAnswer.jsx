@@ -2,9 +2,10 @@ import { useAI } from "../context/AIProvider";
 import ReferenceImage from "../Utils/ReferenceImage";
 import Loader from "../Utils/Loader";
 import InteractionButton from "../Utils/InteractionButton";
+import SendMail from "../Utils/SendMail";
 
 function CreateTableAnswer() {
-  const { answer, status, exportAnswer } = useAI();
+  const { answer, status, exportAnswer, sendToMail } = useAI();
 
   const rawData = answer.split("|");
 
@@ -43,9 +44,20 @@ function CreateTableAnswer() {
       {status === "loading" ? (
         <Loader />
       ) : (
-        <InteractionButton action={() => exportAnswer("xlsx", tableData)}>
-          <img src="/xlsx.png" className="w-[50%] drop-shadow" />
-        </InteractionButton>
+        <>
+          <SendMail />
+          {sendToMail.send ? (
+            sendToMail.valid && (
+              <InteractionButton action={() => exportAnswer("xlsx", tableData)}>
+                <img src="/xlsx.png" className="w-[50%] drop-shadow" />
+              </InteractionButton>
+            )
+          ) : (
+            <InteractionButton action={() => exportAnswer("xlsx", tableData)}>
+              <img src="/xlsx.png" className="w-[50%] drop-shadow" />
+            </InteractionButton>
+          )}
+        </>
       )}
     </>
   );

@@ -37,7 +37,7 @@ function CreateTablePrompt() {
         </>
       )}
 
-      <Outlet />
+      {status === "ready" && answer && <Outlet />}
     </PromptContainer>
   );
 }

@@ -35,7 +35,7 @@ function TextPrompt() {
         </>
       )}
 
-      <Outlet />
+      {status === "ready" && answer && <Outlet />}
     </PromptContainer>
   );
 }

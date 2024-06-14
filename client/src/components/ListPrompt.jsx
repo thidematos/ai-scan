@@ -33,7 +33,7 @@ function ListPrompt() {
           )}
         </>
       )}
-      <Outlet />
+      {status === "ready" && answer && <Outlet />}
     </PromptContainer>
   );
 }

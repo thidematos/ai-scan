@@ -36,7 +36,7 @@ function TablePrompt() {
         </>
       )}
 
-      <Outlet />
+      {status === "ready" && answer && <Outlet />}
     </PromptContainer>
   );
 }
