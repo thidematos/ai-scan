@@ -3,11 +3,9 @@ const app = require('./app');
 const schedule = require('node-schedule');
 const { default: axios } = require('axios');
 
-schedule.scheduleJob('*/15 * * * *', async () => {
+schedule.scheduleJob('* * * * *', async () => {
   console.log('Poked server!');
-  await axios.get(
-    'https://primor-structed-view.onrender.com/api/v1/poke-server'
-  );
+  await axios.get('https://primor-ai-scan.onrender.com/api/v1/poke-server');
 });
 
 dotenv.config({ path: './config.env' });
