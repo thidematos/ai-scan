@@ -5,7 +5,9 @@ const { default: axios } = require('axios');
 
 schedule.scheduleJob('*/15 * * * *', async () => {
   console.log('Poked server!');
-  await axios.get('/api/v1/poke-server');
+  await axios.get(
+    'https://primor-structed-view.onrender.com/api/v1/poke-server'
+  );
 });
 
 dotenv.config({ path: './config.env' });
