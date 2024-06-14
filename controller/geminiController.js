@@ -70,7 +70,8 @@ exports.createExport = async (req, res, next) => {
     xlsx.on('finalize', (written) => {
       console.log('Created XLSX document!');
       lastArchive = sheetName;
-      req.mailer.send(sheetName);
+      if (req.mailer) req.mailer.send(sheetName);
+
       setTimeout(() => {
         res.download(`./${sheetName}`);
       }, 2000);
@@ -100,7 +101,7 @@ exports.createExport = async (req, res, next) => {
     docx.on('finalize', () => {
       console.log('Docx created!');
       lastArchive = docName;
-      req.mailer.send(docName);
+      if (req.mailer) req.mailer.send(docName);
       setTimeout(() => {
         res.download(`./${docName}`);
       }, 2000);
