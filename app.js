@@ -25,4 +25,8 @@ app.use(express.json());
 
 app.use('/api/v1/gemini', geminiRouter);
 
+app.all('/*', (req, res, next) => {
+  res.sendFile(path.join(__dirname, 'public/index.html'));
+});
+
 module.exports = app;
