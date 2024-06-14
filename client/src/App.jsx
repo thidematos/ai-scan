@@ -20,7 +20,7 @@ function App() {
 
   return (
     <main
-      className={`relative flex w-screen flex-col items-center justify-center bg-gray-100 ${isOpenCropper ? "h-[100svh]" : "min-h-[100svh] py-20"}`}
+      className={`relative flex w-screen flex-col items-center justify-center bg-gray-100 ${isOpenCropper ? "h-[100dvh]" : "min-h-[100dvh] py-20"}`}
     >
       <Routes>
         <Route path="/" element={<Home />} />

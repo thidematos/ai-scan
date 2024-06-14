@@ -19,7 +19,7 @@ function Modal() {
 }
 
 function Shadow() {
-  return <div className="absolute z-30 h-[100svh] w-full bg-gray-900/70"></div>;
+  return <div className="absolute z-30 h-[100dvh] w-full bg-gray-900/70"></div>;
 }
 
 function ModalContainer({ children }) {

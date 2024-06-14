@@ -5,7 +5,7 @@ function PromptContainer({ children }) {
 
   return (
     <div
-      className={`${isOpenCropper ? "h-[100svh] overflow-hidden" : ""} relative flex grow flex-col items-center justify-evenly gap-12`}
+      className={`${isOpenCropper ? "h-[100dvh] overflow-hidden" : ""} relative flex grow flex-col items-center justify-evenly gap-12`}
     >
       {children}
     </div>
